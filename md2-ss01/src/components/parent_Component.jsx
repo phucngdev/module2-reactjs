@@ -11,6 +11,7 @@ export default class Parent_Component extends Component {
       name: "abc",
     };
   }
+  // khi state thay đổi thì component bị re-render lại
   handleClick = () => {
     this.setState({
       id: this.state.id + 1,
