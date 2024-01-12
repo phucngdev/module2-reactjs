@@ -1,30 +1,35 @@
 import "./App.css";
-import React from "react";
-import Parent_Component from "./components/parent_Component";
+import React, { Component } from "react";
+import Lifecycle from "./components/lifecycle";
+import Form from "./components/form";
 
-function App() {
-  const user = [
-    {
-      id: 1,
-      name: "A",
-      age: 1,
-    },
-    {
-      id: 2,
-      name: "B",
-      age: 2,
-    },
-    {
-      id: 3,
-      name: "C",
-      age: 3,
-    },
-  ];
-  return (
-    <>
-      <Parent_Component user={user}></Parent_Component>
-    </>
-  );
+export default class App extends Component {
+  arr = [];
+  constructor() {
+    super();
+    this.state = {
+      number: "",
+    };
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const findCode = this.arr.find((code) => code == this.state.number);
+    if (findCode) {
+      const user = {
+        number: this.state.number,
+      };
+      this.arr.push(user);
+    }
+    console.log(this.arr);
+  };
+  render() {
+    return (
+      <div>
+        <form action="" onSubmit={this.handleSubmit}>
+          <input name="number" onChange={this.handleChange} type="text" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
 }
-
-export default App;
